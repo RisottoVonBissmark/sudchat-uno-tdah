@@ -7,10 +7,15 @@ import lombok.Data;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.UUID;
 
 @Data
 public class Deck {
 
-    Queue<Card> cards = new LinkedList<>();
+    private String id;
+    private Queue<Card> cards = new LinkedList<>();
 
+    public Deck() {
+        this.id = UUID.randomUUID().toString();
+    }
 }
