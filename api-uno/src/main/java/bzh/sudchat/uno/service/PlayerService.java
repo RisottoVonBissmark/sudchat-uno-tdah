@@ -60,4 +60,11 @@ public class PlayerService {
 
         playerRepository.save(player);
     }
+
+    public void addCard(String playerID, Card card) {
+
+        Player player = getPlayerById(playerID);
+
+        player.getDeck().add(card);
+    }
 }

@@ -34,8 +34,18 @@ public class GameController {
     }
 
     //piocher (GET)
+    @GetMapping("/{gameID}/{playerID}/cards/pioche")
+    public Card piocheCard(@PathVariable String gameID, @PathVariable String playerID) {
+        return this.gameService.pioche(gameID, playerID);
+    }
+
     // Jouer une carte (POST)
-    // voir ses cartes (GET)
+
+    // voir la dernière carte jouée (GET)
+    @GetMapping("/{gameID}/card/view")
+    public Card viewLastCard(@PathVariable String gameID) {
+        return this.gameService.getLastCard(gameID);
+    }
 
     @GetMapping("/{gameID}/{playerID}/cards/view")
     public Iterable<Card> viewCards(@PathVariable String gameID, @PathVariable String playerID) {

@@ -44,6 +44,8 @@ public class GameService {
 
         game.setPlayerIds(playerIds);
 
+        game.setLastCard(deckService.pioche(game.getDeckId()));
+
         this.gameRepository.save(game);
 
         return game.getId();
@@ -68,5 +70,21 @@ public class GameService {
         }
 
         return player.getDeck();
+    }
+
+    public Card pioche(String gameID, String playerID) {
+        Card card;
+
+        Game game = getGameById(gameID);
+        card = deckService.pioche(game.getDeckId());
+
+        playerService.addCard(playerID, card);
+
+        return card;
+    }
+
+    public Card getLastCard(String gameID) {
+        Game game = getGameById(gameID);
+        return game.getLastCard();
     }
 }
