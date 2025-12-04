@@ -1,0 +1,6 @@
+git init -y
+npm install react
+
+
+Pour lancer :
+    npm run dev
