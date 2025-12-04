@@ -1,6 +1,7 @@
 package bzh.sudchat.uno.controller;
 
 import bzh.sudchat.uno.model.Card;
+import bzh.sudchat.uno.model.Game;
 import bzh.sudchat.uno.service.GameService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,14 +22,26 @@ public class GameController {
 
     // url: /game/idpartie/idjoueur/action
 
+    @GetMapping("/create")
+    public Game createGame() {
+        String gameId = this.gameService.createGame();
+        return this.gameService.getGameById(gameId);
+    }
+
+    @GetMapping("/{gameID}")
+    public Game viewCards(@PathVariable String gameID) {
+        return this.gameService.getGameById(gameID);
+    }
+
     //piocher (GET)
     // Jouer une carte (POST)
     // voir ses cartes (GET)
 
     @GetMapping("/{gameID}/{playerID}/cards/view")
-    public Iterable<Card> viewCards(@PathVariable String gameId, @PathVariable String playerID) {
-        return this.gameService.getCards(gameId, playerID);
+    public Iterable<Card> viewCards(@PathVariable String gameID, @PathVariable String playerID) {
+        return this.gameService.getCards(gameID, playerID);
     }
+
     // uno (POST)
     // contre uno (POST)
 

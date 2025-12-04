@@ -34,8 +34,15 @@ public class GameService {
     public String createGame() {
         Game game = new Game();
         String deckId = deckService.create(108);
-
         game.setDeckId(deckId);
+
+        ArrayList<String> playerIds = new ArrayList<>();
+        for (int i = 0; i < 4; i++) {
+            String playerId = playerService.create(7);
+            playerIds.add(playerId);
+        }
+
+        game.setPlayerIds(playerIds);
 
         this.gameRepository.save(game);
 
