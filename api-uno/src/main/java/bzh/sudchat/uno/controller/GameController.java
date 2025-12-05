@@ -27,11 +27,6 @@ public class GameController {
         return this.gameService.getGameById(gameId);
     }
 
-    @GetMapping("/{gameID}")
-    public Game viewCards(@PathVariable String gameID) {
-        return this.gameService.getGameById(gameID);
-    }
-
     @GetMapping("/{gameID}/join")
     public boolean join(@PathVariable String gameID, HttpServletResponse response) {
 
@@ -75,7 +70,17 @@ public class GameController {
     public boolean isMyTurn(@PathVariable String gameID, @CookieValue(value = "session", required = false) String playerID) {
         return this.gameService.isMyTurn(gameID, playerID);
     }
-    
+
+    @GetMapping("/{gameID}/nbplayers")
+    public int nbPlayers(@PathVariable String gameID, @CookieValue(value = "session", required = false) String playerID) {
+        return this.gameService.nbPlayers(gameID, playerID);
+    }
+
+    @GetMapping("/{gameID}/nbcards/{player}")
+    public int getNbCards(@PathVariable String gameID, @CookieValue(value="session", required = false) String playerID, @PathVariable String player) {
+        return this.gameService.getNbCards(gameID, playerID, player);
+    }
+
     // uno (POST)
     // contre uno (POST)
 
