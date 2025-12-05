@@ -1,12 +1,25 @@
 body {
     margin: 0;
     padding: 0;
+    height: 100%;
+    width: 100%;
+}
+
+#root{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
 }
 
 .playground {
     position: relative;
-    width: 65vw;
-    height: 65vh;
+    width: 70vw;
+    height: 70vh;
     overflow: hidden;
     display: flex;
     justify-content: center;
@@ -67,6 +80,22 @@ body {
 
 .card img {
     height: 100%;
+}
+
+#bars-container{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    position: absolute;
+    top: 10px;
+    margin: auto;
+    width: 70%;
+}
+
+#market-button{
+    position: absolute;
+    right: 20px;
+    top: 60%;
 }
 
 /* ================ Buttons ================ */

@@ -15,9 +15,8 @@ export class MoneyBar extends React.Component{
     }
 
     render(){
-        var barLength = this.state.width * ( this.state.health / this.state.maxHealth);
         return (
-        <div id="bar-container">
+        <div id="money-bar-container">
             <img src="public/svg/coin.png"/>
             <span id="coins">{this.state.coins}</span>
         </div>
