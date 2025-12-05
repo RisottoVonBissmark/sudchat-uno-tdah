@@ -3,6 +3,7 @@ import { User, Hash, Crown } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 export default function LoginPage() {
+  const navigate = useNavigate();
   const defaultBg = "bg-[#bf0000]";
   const belgianBg = "bg-gradient-to-r from-black via-yellow-500 to-red-500";
 

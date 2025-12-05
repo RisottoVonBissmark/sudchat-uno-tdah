@@ -3,7 +3,7 @@ export default function UserWait({ player, onRemove }){
         <div className="flex items-center gap-2 bg-white/20 p-3 rounded-lg">
             <img 
                 alt="Player Icon" 
-                src='../../src/assets/Player.png'  
+                src='/Player.png'  
                 width={40} 
                 className="rounded-full"
             />

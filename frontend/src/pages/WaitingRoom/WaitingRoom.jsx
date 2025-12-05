@@ -1,6 +1,15 @@
+import { useState } from "react";
 import UserWait from "./UserWait";
 
-export default function WaitingRoom({ players, onRemovePlayer }){
+export default function WaitingRoom({ players: initialPlayers }){
+    const [players, setPlayers] = useState(initialPlayers);
+    
+    const handleRemovePlayer = (indexToRemove) => {
+        setPlayers(prevPlayers => 
+            prevPlayers.filter((_, index) => index !== indexToRemove)
+        );
+    };
+
     return(
         <div className="bg-red-400 rounded-xl p-10">
             <div className="mb-4 text-white font-bold">
@@ -16,13 +25,14 @@ export default function WaitingRoom({ players, onRemovePlayer }){
                     <div key={index} className="py-2">
                         <UserWait 
                             player={player}
-                            onRemove={() => onRemovePlayer(index)}
+                            onRemove={() => handleRemovePlayer(index)}
                         />
                     </div>
                 ))
             )}
-            <button>Démarrer</button>
-            
+            <button className="mt-4 px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700">
+                Démarrer
+            </button>
         </div>
-    )
+    );
 }
