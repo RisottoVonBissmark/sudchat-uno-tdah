@@ -31,4 +31,7 @@ public class Card {
 
     @Column(name = "rarete")
     private int rarete;
+
+    @Column(name = "type")
+    private int type;
 }

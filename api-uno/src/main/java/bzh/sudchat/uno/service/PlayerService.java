@@ -52,7 +52,12 @@ public class PlayerService {
         return player;
     }
 
+
     public void pioche(String playerId, String deckID) {
+        pioche(playerId, deckID, 1);
+    }
+
+    public void pioche(String playerId, String deckID, int nb) {
         Card card = deckService.pioche(deckID);
         Player player = getPlayerById(playerId);
 
