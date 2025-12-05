@@ -112,9 +112,42 @@ public class GameService {
 
         if (
             card.getColor() != game.getLastCard().getColor() &&
-            card.getNumCarte() != game.getLastCard().getNumCarte()
+            card.getNumCarte() != game.getLastCard().getNumCarte() &&
+            card.getColor() != 4
         ) {
             throw new CardNotPlayableException(""+cardID);
+        }
+
+        String nPlayer = game.getPlayerIds().get((game.getCurPlayer() + game.getSens()) % 4);
+        switch (card.getType()) {
+            // pioche x cartes
+            case 1 :
+                playerService.pioche(nPlayer, game.getDeckId(), card.getNumCarte());
+                break;
+            //saute un tour
+            case 2:
+                nextPlayer(game);
+                break;
+            // chgmt sens
+            case 3:
+                game.setSens(- game.getSens());
+                break;
+            // chgmt couleur
+            case 4:
+                if (card.getNumCarte() >= 4 ||  card.getNumCarte() < 0) {
+                    throw new CardNotPlayableException(""+cardID);
+                }
+                card.setColor(card.getNumCarte());
+                break;
+            case 5:
+                if (card.getNumCarte() >= 4 ||  card.getNumCarte() < 0) {
+                    throw new CardNotPlayableException(""+cardID);
+                }
+                card.setColor(card.getNumCarte());
+                playerService.pioche(nPlayer, game.getDeckId(), 4);
+                break;
+            default:
+                throw new CardNotPlayableException(""+cardID);
         }
 
         player.getDeck().remove(card);
@@ -125,7 +158,7 @@ public class GameService {
     private void nextPlayer(Game game) {
         int curPlayer = game.getCurPlayer();
 
-        curPlayer++;
+        curPlayer += game.getSens();
         curPlayer %= game.getPlayerIds().size();
 
         game.setCurPlayer(curPlayer);

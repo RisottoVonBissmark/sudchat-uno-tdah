@@ -7,5 +7,6 @@ CREATE TABLE Cartes (
     color INT,
     numCarte INT,
     valeur INT,
+    type INT,
     rarete INT
 );
