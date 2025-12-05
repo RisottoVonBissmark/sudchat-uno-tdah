@@ -8,11 +8,12 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 @Data
-@Entity
 public class Player {
 
-    @Id
     String id;
-
     ArrayList<Card> deck;
+
+    public Player() {
+        id = UUID.randomUUID().toString().replace("-", "");
+    }
 }

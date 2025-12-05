@@ -34,8 +34,17 @@ public class GameService {
     public String createGame() {
         Game game = new Game();
         String deckId = deckService.create(108);
-
         game.setDeckId(deckId);
+
+        ArrayList<String> playerIds = new ArrayList<>();
+        for (int i = 0; i < 4; i++) {
+            String playerId = playerService.create(7);
+            playerIds.add(playerId);
+        }
+
+        game.setPlayerIds(playerIds);
+
+        game.setLastCard(deckService.pioche(game.getDeckId()));
 
         this.gameRepository.save(game);
 
@@ -61,5 +70,21 @@ public class GameService {
         }
 
         return player.getDeck();
+    }
+
+    public Card pioche(String gameID, String playerID) {
+        Card card;
+
+        Game game = getGameById(gameID);
+        card = deckService.pioche(game.getDeckId());
+
+        playerService.addCard(playerID, card);
+
+        return card;
+    }
+
+    public Card getLastCard(String gameID) {
+        Game game = getGameById(gameID);
+        return game.getLastCard();
     }
 }

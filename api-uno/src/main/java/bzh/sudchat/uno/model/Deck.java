@@ -16,6 +16,6 @@ public class Deck {
     private Queue<Card> cards = new LinkedList<>();
 
     public Deck() {
-        this.id = UUID.randomUUID().toString();
+        this.id = UUID.randomUUID().toString().replace("-", "");
     }
 }
