@@ -8,6 +8,7 @@ import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Optional;
 
 @Data
@@ -33,5 +34,17 @@ public class CardService {
         }
 
         return card.get();
+    }
+
+    public Card getRandomCard() {
+
+        ArrayList<Card> cards = new ArrayList<>();
+        for (Card card : getCards()) {
+            cards.add(card);
+        }
+
+        int id = (int) (Math.random() * cards.size());
+
+        return cards.get(id);
     }
 }

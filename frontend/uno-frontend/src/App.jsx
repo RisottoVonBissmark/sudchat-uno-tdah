@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import WaitingRoom from './pages/WaitingRoom/WaitingRoom'
 import './App.css'
+import LoginPage from './Login'
 
 function App() {
   const [players, setPlayers] = useState(["Miku", "Teto", "Neru"])
@@ -12,12 +13,18 @@ function App() {
   }
 
   return (
+<<<<<<< HEAD
     <>
       <WaitingRoom 
         players={players} 
         onRemovePlayer={handleRemovePlayer} 
       />
     </>
+=======
+    <div className='flex flex-col min-h-screen '>
+      <LoginPage />
+    </div>
+>>>>>>> 45c7e85d81c432350adbee03c2cd43df7b588a8f
   )
 }
 

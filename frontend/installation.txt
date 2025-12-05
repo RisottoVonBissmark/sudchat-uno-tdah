@@ -1,6 +1,7 @@
 npm init -y
 npm install react
-
+npm install vite
+npm install tailwindcss @tailwindcss/vite
 
 Pour lancer :
     npm run dev
