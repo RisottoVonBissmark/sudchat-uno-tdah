@@ -1,20 +1,62 @@
 import { Playground } from './playground/Playground.jsx'
 import './App.css'
-import {CardContainer} from './affichageCarteJoueurAnaelle/CarteJoueur'
-import {Boutique} from './affichageCarteJoueurAnaelle/Boutique'
-import {HealthBar} from './affichageCarteJoueurAnaelle/stats/healthBar'
-import {FistBar} from './affichageCarteJoueurAnaelle/stats/FistBar'
-import {MoneyBar} from './affichageCarteJoueurAnaelle/stats/MoneyBar'
+import { useState } from 'react';
+
+const tempHand = [
+  { type: "normal" },
+  { type: "normal" },
+  { type: "normal" },
+  { type: "normal" },
+  { type: "normal" },
+  { type: "normal" },
+  { type: "normal" },
+  { type: "normal" },
+  { type: "normal" },
+  { type: "normal" },
+  { type: "normal" },
+  { type: "normal" },
+  { type: "normal" },
+  { type: "normal" },
+  { type: "normal" },
+  { type: "normal" },
+  { type: "normal" },
+  { type: "normal" },
+  { type: "normal" },
+  { type: "normal" },
+  { type: "normal" },
+  { type: "normal" },
+  { type: "normal" },
+  { type: "normal" },
+  { type: "normal" },
+  { type: "normal" },
+  { type: "normal" },
+  { type: "normal" },
+  { type: "normal" },
+  { type: "normal" },
+  { type: "normal" },
+];
+
+const tempPlayerList = [
+  {
+    name: "Anaelle",
+    id: crypto.randomUUID(),
+    cardsCount: 5
+  },
+  {
+    name: "Anaelle 2",
+    id: crypto.randomUUID(),
+    cardsCount: 10
+  },
+  {
+    name: "Anaelle 3",
+    id: crypto.randomUUID(),
+    cardsCount: 15
+  }
+];
 
 function App() {
   return (
-    <>
-    <HealthBar width={240} value={50} maxValue={50}/>
-    <FistBar width={240} value={50} maxValue={50}/>
-    <MoneyBar value={300}/>
-     {/*<Boutique products={productsTemp} coins="3000" onClose={closeBoutique}/>*/}
-      {/* <CardContainer width='200px' size="10" cards={listCardsTemp}/>*/}
-    </>
+    <Playground hand={tempHand} opponents={tempPlayerList} />
   )
 }
 

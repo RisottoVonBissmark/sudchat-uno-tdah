@@ -1,21 +1,13 @@
-#root{
-    height: 100%;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    
-}
-
 #boutique-popup{
     display: flex;
     flex-direction: column;
     background: rgb(177, 149, 255);
     width: 70%;
-    aspect-ratio: 1/0.8;
+    aspect-ratio: 1/0.7;
     border-radius: 15px;
     padding: 10px;
     gap: 5px;
+    z-index: 4;
 }
 
 #boutique-actionBar{
