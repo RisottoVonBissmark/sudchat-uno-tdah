@@ -57,19 +57,14 @@ export class HealthBar extends React.Component{
 export class MoneyBar extends React.Component{
 
     constructor(props) {
-        super(props); // Obligatoire
-        // Ici, tu peux définir des attributs d'instance
-        this.state = {
-            coins: props.value
-        };
-
+        super(props);
     }
 
     render(){
         return (
         <div id="money-bar-container">
             <img src="icons/coin.png"/>
-            <span id="coins">{this.state.coins}</span>
+            <span id="coins">{this.props.value}</span>
         </div>
         )
     }

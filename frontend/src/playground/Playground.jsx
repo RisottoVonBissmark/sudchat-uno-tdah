@@ -102,7 +102,7 @@ export function Playground({ gameId, hand, opponents }) {
 
   return (
     <div className="playground">
-      {market && <Boutique products={productsTemp} coins={coins} onClose={() => setMarket(false)}/>}
+      {market && <Boutique products={productsTemp} coins={coins} onClose={() => setMarket(false)} setCoins={setCoins}/>}
       <UnoButton />
       <CounterButton />
       <MarketButton onClick={() => setMarket(true)}/>
