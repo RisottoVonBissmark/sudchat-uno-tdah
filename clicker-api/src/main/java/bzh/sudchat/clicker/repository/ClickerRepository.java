@@ -11,13 +11,13 @@ public class ClickerRepository {
 
     private static ClickerRepository clickerRepository = null;
 
-    private final Map<Integer, Clicker> clickers;
+    private final Map<String, Clicker> clickers;
 
     private ClickerRepository() {
         clickers = new HashMap<>();
     }
 
-    public Clicker findById(int id) {
+    public Clicker findById(String id) {
         return clickers.get(id);
     }
 

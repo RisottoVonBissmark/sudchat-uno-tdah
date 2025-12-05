@@ -21,7 +21,7 @@ public class ClickerService {
         this.clickerRepository = ClickerRepository.get();
     }
 
-    public Clicker getClicker(int id) {
+    public Clicker getClicker(String id) {
 
         Clicker clicker = clickerRepository.findById(id);
 
@@ -42,7 +42,7 @@ public class ClickerService {
         return clicker;
     }
 
-    public int increment(int clickerId) {
+    public int increment(String clickerId) {
         Clicker clicker = getClicker(clickerId);
         clicker.setNb(clicker.getNb() + 1);
 

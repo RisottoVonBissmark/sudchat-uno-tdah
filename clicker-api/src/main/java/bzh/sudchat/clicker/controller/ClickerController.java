@@ -20,7 +20,7 @@ public class ClickerController {
     }
 
     @GetMapping("/{clickerId}/click")
-    public int click(@PathVariable int clickerId) {
+    public int click(@PathVariable String clickerId) {
         return clickerService.increment(clickerId);
     }
 

@@ -76,6 +76,11 @@ public class GameController {
         return this.gameService.nbPlayers(gameID, playerID);
     }
 
+    @GetMapping("/{gameID}/nbcards/{player}")
+    public int getNbCards(@PathVariable String gameID, @CookieValue(value="session", required = false) String playerID, @PathVariable String player) {
+        return this.gameService.getNbCards(gameID, playerID, player);
+    }
+
     // uno (POST)
     // contre uno (POST)
 

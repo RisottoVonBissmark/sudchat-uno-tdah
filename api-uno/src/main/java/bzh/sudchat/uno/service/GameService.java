@@ -219,4 +219,18 @@ public class GameService {
 
         return game.getPlayerIds().size();
     }
+
+    public int getNbCards(String gameID, String playerID, int p) {
+
+        Game game = getGameById(gameID);
+
+        if (! game.getPlayerIds().contains(playerID)) {
+            throw new UnauthorizedException("");
+        }
+
+        playerID = game.getPlayerIds().get(p);
+        Player player = playerService.getPlayerById(playerID);
+
+        return player.getDeck().size();
+    }
 }
