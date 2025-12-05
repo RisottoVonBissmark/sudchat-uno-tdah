@@ -1,12 +1,40 @@
-#bar-container{
-    height: 52px;
-    border-radius: 26px;
-    background-color: #363636;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding:  4px 10px;
+.bar {
     width: 100%;
+    height: 52px;
+    padding:  4px 10px;
+    display: flex;
+    align-items: center;
+
+    background-color: #363636;
+    border-radius: 26px;
+}
+
+.bar-icon {
+    max-height: 70%;
+}
+
+.bar-container{
+    width: 100%;
+    height: 42px;
+    background-color: #1a1a1a;
+    border-radius: 21px;
+    overflow: hidden;
+    margin: 0px 10px;
+}
+
+.bar-progress {
+    height: 100%;
+    border-radius: 21px;
+}
+
+.bar-value {
+    height: fit-content;
+}
+
+/* ============ Specific Bars ============ */
+
+#fist-bar .bar-progress {
+    background-color: #FFCD70;
 }
 
 #money-bar-container{
@@ -19,26 +47,11 @@
     padding:  4px 10px;
 }
 
-#bar-container img{
-    height: 70%;
-}
-
 #money-bar-container img{
     height: 70%;
 }
 
-
-
-#bar-value{
-    height: 42px;
-    border-radius: 21px;
-}
-
-#bar-number{
-    height: fit-content;
-}
-
-#coins{
+#coins {
     font-size: 140%;
     color: magenta;
     font-weight: bold;

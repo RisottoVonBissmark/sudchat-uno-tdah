@@ -17,12 +17,12 @@ export class FistBar extends React.Component{
     render(){
         var barLength = 100 * this.state.health / this.state.maxHealth;
         return (
-        <div id="bar-container">
-            <img src="icons/fist.png"/>
-            <div id="bar-container" style={{width: "100%"}}>
-                <div id="bar-value" style={{backgroundColor: "#FFCD70", width: `${barLength}%`}}></div>
+        <div id="fist-bar" className="bar">
+            <img className="bar-icon" src="icons/fist.png"/>
+            <div className="bar-container">
+                <div className="bar-progress" style={{ width: `${barLength}%` }}></div>
             </div>
-            <span id="bar-number">{this.state.health}/{this.state.maxHealth}</span>
+            <span className="bar-value">{this.state.health}/{this.state.maxHealth}</span>
         </div>
         )
     }
@@ -43,12 +43,12 @@ export class HealthBar extends React.Component{
     render(){
         var barLength = 100 * this.state.health / this.state.maxHealth;
         return (
-        <div id="bar-container">
-            <img src="icons/heart.png"/>
-            <div id="bar-container" style={{width: "100%"}}>
-                <div id="bar-value" style={{backgroundColor: "#FF0000", width: `${barLength}%`}}></div>
+        <div className="bar">
+            <img className="bar-icon" src="icons/heart.png"/>
+            <div className="bar-container" style={{width: "100%"}}>
+                <div className="bar-progress" style={{backgroundColor: "#FF0000", width: `${barLength}%`}}></div>
             </div>
-            <span id="bar-number">{this.state.health}/{this.state.maxHealth}</span>
+            <span className="bar-value">{this.state.health}/{this.state.maxHealth}</span>
         </div>
         )
     }
