@@ -1,0 +1,9 @@
+#boutique-popup{
+    display: flex;
+    flex-direction: column;
+    background: red;
+}
+
+#boutique-actionBar{
+
+}

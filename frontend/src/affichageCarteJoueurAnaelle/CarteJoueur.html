@@ -1,0 +1,30 @@
+<div class="cards-container">
+    <div id="cards-list">
+    </div>
+    <div id="cards-count">0</div>
+</div>
+<style>
+#cards-container{
+    border: 3px rgba(255, 255, 255, 0.7) solid;
+    border-radius: 15px;
+}
+</style>
+<script>
+var cards = [
+    {
+        name: "0red",
+        url: "/cartes/0red.svg"
+    }
+]
+
+var cardsContainer = document.getElementById("cards-list");
+var cardsList = []
+
+function addCard(card){ //objet carte de la liste
+    cardsList.push(card);
+    cardsContainer.innerHTML = cardsContainer.innerHTML + 
+    '<img src="' + card["url"] + '" class="card">';
+}
+
+addCard(cards[0]);
+</script>
