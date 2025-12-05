@@ -32,6 +32,7 @@ public class Index {
         routes.put("piocher", "GET /game/{gameID}/pioche");
         routes.put("voir la carte en haut de la pile", "GET /game/{gameID}/lasplay");
         routes.put("savoir si c'est mon tour", "GET /game/{gameID}/ismyturn");
+        routes.put("nombre joueur dans la partie", "GET /game/{gameID}/nbplayers");
         routes.put("/!\\ attention /!\\", "bien penser a metter le coockie de session dans les requête");
 
         footer = "Bonne partie a vous !";
