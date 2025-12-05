@@ -8,7 +8,6 @@ target/
 ### REACT ###
 
 node_modules
-package.json
 package-lock.json
 
 ### STS ###

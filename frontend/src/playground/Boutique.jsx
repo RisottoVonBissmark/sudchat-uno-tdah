@@ -33,15 +33,15 @@ export class Boutique extends React.Component{
 
     render(){
         return <div id="boutique-popup">
-            <div id="boutique-actionBar"><button onClick={(e) => this.state.onClose()}><img width="25px" src="public/svg/cross.svg"/></button></div>
+            <div id="boutique-actionBar"><button onClick={(e) => this.state.onClose()}><img width="25px" src="icons/cross.svg"/></button></div>
             <div id='boutique-content'>
-                <div id="boutique-solde"><span>{this.state.coins}</span><img src="public/svg/coin.png"/></div>
+                <div id="boutique-solde"><span>{this.state.coins}</span><img src="icons/coin.png"/></div>
                 <div id='boutique-content_'>
                     
                     {this.state.products.map((product) => {return <div key={product.key} className="boutique-product" onClick={(e) => this.purchase(product)}>
                         <img src={product.url}></img>
                         <span className="product-name">{product.name}</span>
-                        <div className="product-price"><span>{product.price}</span><img src="public/svg/coin.png"/></div>
+                        <div className="product-price"><span>{product.price}</span><img src="icons/coin.png"/></div>
                         </div>})}
                 </div>
             </div>

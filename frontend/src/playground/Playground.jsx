@@ -1,99 +1,95 @@
-import { UnoButton } from "./UnoButton";
-import { CounterButton } from "./CounterButton";
-import { OpponentLayout } from "./OpponentLayout";
-import { Pile } from "./cards/Pile";
-import { PlayerHand } from "./PlayerHand";
-import { MarketButton } from "./MarketButton";
-import {HealthBar} from '../affichageCarteJoueurAnaelle/stats/healthBar'
-import {FistBar} from '../affichageCarteJoueurAnaelle/stats/FistBar'
-import {MoneyBar} from '../affichageCarteJoueurAnaelle/stats/MoneyBar'
+import { FistBar, HealthBar, MoneyBar } from './buttons/Bars';
+import { OpponentLayout } from './OpponentLayout';
+import { Pile } from './cards/Pile';
+import { PlayerHand } from './PlayerHand';
+import { UnoButton, CounterButton, MarketButton } from './buttons/Buttons';
+import { Boutique } from './Boutique';
 import './playground.css';
 import { useState } from "react";
-import { Boutique } from "./Boutique";
 
 const productsTemp = [
     {
         key : crypto.randomUUID(),
         name: "skin chat",
-        url: "public/cartes/0red.svg",
+        url: "cards/macron.png",
         price: 934
     },
     {
         key : crypto.randomUUID(),
         name: "bibite",
-        url: "public/cartes/0red.svg",
+        url: "cards/macron.png",
         price: 934
     },
     {
         key : crypto.randomUUID(),
         name: "jsp",
-        url: "public/cartes/0red.svg",
+        url: "cards/macron.png",
         price: 934
     },
     {
         key : crypto.randomUUID(),
         name: "skin chat",
-        url: "public/cartes/0red.svg",
+        url: "cards/macron.png",
         price: 934
     },
     {
         key : crypto.randomUUID(),
         name: "bibite",
-        url: "public/cartes/0red.svg",
+        url: "cards/macron.png",
         price: 934
     },
     {
         key : crypto.randomUUID(),
         name: "jsp",
-        url: "public/cartes/0red.svg",
+        url: "cards/macron.png",
         price: 934
     },
     {
         key : crypto.randomUUID(),
         name: "skin chat",
-        url: "public/cartes/0red.svg",
+        url: "cards/macron.png",
         price: 934
     },
     {
         key : crypto.randomUUID(),
         name: "bibite",
-        url: "public/cartes/0red.svg",
+        url: "cards/macron.png",
         price: 934
     },
     {
         key : crypto.randomUUID(),
         name: "jsp",
-        url: "public/cartes/0red.svg",
+        url: "cards/macron.png",
         price: 934
     },
     {
         key : crypto.randomUUID(),
         name: "skin chat",
-        url: "public/cartes/0red.svg",
+        url: "cards/macron.png",
         price: 934
     },
     {
         key : crypto.randomUUID(),
         name: "bibite",
-        url: "public/cartes/0red.svg",
+        url: "cards/macron.png",
         price: 934
     },
     {
         key : crypto.randomUUID(),
         name: "jsp",
-        url: "public/cartes/0red.svg",
+        url: "cards/macron.png",
         price: 934
     },
     {
         key : crypto.randomUUID(),
         name: "skin chat",
-        url: "public/cartes/0red.svg",
+        url: "cards/macron.png",
         price: 934
     },
     {
         key : crypto.randomUUID(),
         name: "bibite",
-        url: "public/cartes/0red.svg",
+        url: "cards/macron.png",
         price: 934
     }
 ];

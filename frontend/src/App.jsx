@@ -1,5 +1,4 @@
 import { Playground } from './playground/Playground.jsx'
-import './App.css'
 
 const tempHand = [
   { type: "normal" },
