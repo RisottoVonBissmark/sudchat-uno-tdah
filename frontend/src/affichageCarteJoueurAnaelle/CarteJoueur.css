@@ -1,0 +1,27 @@
+#cards-container{
+    display: flex;
+    padding: 20px;
+    flex-direction: row;
+    gap: 0;
+    height: fit-content;
+}
+
+#cards-list{
+    display: flex;
+    flex-direction: row;
+    overflow: visible;
+    height: fit-content;
+}
+
+.card-wrapper {
+  width: 30px;     /* largeur *logique* utilisée par flex */
+  height: fit-content;
+  position: relative;
+  overflow: visible; /* important : l’image peut dépasser */
+}
+
+.card{
+    position: absolute; 
+    left: 0;
+    top: 0;
+}

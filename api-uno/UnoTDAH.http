@@ -1,0 +1,18 @@
+### GET request to example server
+GET http://localhost:8081/game/1e3dada5e4f54addb37950b41f2395c1/95d60bd2a40342a89e9ed1e96b384dbd/cards
+###
+
+###
+GET http://localhost:8081/game/1e3dada5e4f54addb37950b41f2395c1/95d60bd2a40342a89e9ed1e96b384dbd/ismyturn
+###
+
+###
+GET http://localhost:8081/game/1e3dada5e4f54addb37950b41f2395c1/lastplay
+###
+
+### GET request to example server
+POST http://localhost:8081/game/1e3dada5e4f54addb37950b41f2395c1/95d60bd2a40342a89e9ed1e96b384dbd/play
+Content-Type: application/json
+
+5
+###
