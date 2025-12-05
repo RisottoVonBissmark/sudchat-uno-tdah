@@ -4,10 +4,7 @@ import bzh.sudchat.uno.model.Card;
 import bzh.sudchat.uno.model.Game;
 import bzh.sudchat.uno.service.GameService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/game")
@@ -34,24 +31,32 @@ public class GameController {
     }
 
     //piocher (GET)
-    @GetMapping("/{gameID}/{playerID}/cards/pioche")
+    @GetMapping("/{gameID}/{playerID}/pioche")
     public Card piocheCard(@PathVariable String gameID, @PathVariable String playerID) {
         return this.gameService.pioche(gameID, playerID);
     }
 
     // Jouer une carte (POST)
+    @PostMapping("/{gameID}/{playerID}/play")
+    public void playCard(@PathVariable String gameID, @PathVariable String playerID, @RequestBody Integer cardID) {
+        gameService.playCard(gameID, playerID, cardID);
+    }
 
     // voir la dernière carte jouée (GET)
-    @GetMapping("/{gameID}/card/view")
+    @GetMapping("/{gameID}/lastplay")
     public Card viewLastCard(@PathVariable String gameID) {
         return this.gameService.getLastCard(gameID);
     }
 
-    @GetMapping("/{gameID}/{playerID}/cards/view")
+    @GetMapping("/{gameID}/{playerID}/cards")
     public Iterable<Card> viewCards(@PathVariable String gameID, @PathVariable String playerID) {
         return this.gameService.getCards(gameID, playerID);
     }
 
+    @GetMapping("/{gameID}/{playerID}/ismyturn")
+    public boolean isMyTurn(@PathVariable String gameID, @PathVariable String playerID) {
+        return this.gameService.isMyTurn(gameID, playerID);
+    }
     // uno (POST)
     // contre uno (POST)
 

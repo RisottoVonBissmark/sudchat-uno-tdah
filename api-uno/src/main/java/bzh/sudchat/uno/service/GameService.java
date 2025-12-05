@@ -1,7 +1,6 @@
 package bzh.sudchat.uno.service;
 
-import bzh.sudchat.uno.exceptions.GameNotFoundException;
-import bzh.sudchat.uno.exceptions.PlayerNotFoundException;
+import bzh.sudchat.uno.exceptions.*;
 import bzh.sudchat.uno.model.Card;
 import bzh.sudchat.uno.model.Deck;
 import bzh.sudchat.uno.model.Game;
@@ -86,5 +85,56 @@ public class GameService {
     public Card getLastCard(String gameID) {
         Game game = getGameById(gameID);
         return game.getLastCard();
+    }
+
+    public void playCard(String gameID, String playerID, int cardID) {
+
+        Game game = getGameById(gameID);
+
+        if (! game.getPlayerIds().get(game.getCurPlayer()).equals(playerID))  {
+            throw new NotPlayerTurnException(""+playerID);
+        }
+
+        Player player = playerService.getPlayerById(playerID);
+
+        Card card  = null;
+        for (Card c : player.getDeck()) {
+            if (c.getId() == cardID) {
+                card = c;
+            }
+        }
+
+        if (card == null) {
+            throw new CardNotFoundException(cardID);
+        }
+
+        if (
+            card.getColor() != game.getLastCard().getColor() &&
+            card.getNumCarte() != game.getLastCard().getNumCarte()
+        ) {
+            throw new CardNotPlayableException(""+cardID);
+        }
+
+        player.getDeck().remove(card);
+        game.setLastCard(card);
+        nextPlayer(game);
+    }
+
+    private void nextPlayer(Game game) {
+        int curPlayer = game.getCurPlayer();
+
+        curPlayer++;
+        curPlayer %= game.getPlayerIds().size();
+
+        game.setCurPlayer(curPlayer);
+    }
+
+    public boolean isMyTurn(String gameID, String playerID) {
+        Game game = getGameById(gameID);
+
+        int curPlayerPos = game.getCurPlayer();
+        String curPlayer = game.getPlayerIds().get(curPlayerPos);
+
+        return playerID.equals(curPlayer);
     }
 }

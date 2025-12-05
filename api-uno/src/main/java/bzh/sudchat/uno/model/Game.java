@@ -12,6 +12,7 @@ public class Game {
     private String deckId;
     private ArrayList<String> playerIds;
     private Card lastCard;
+    private int curPlayer = 0;
 
     public Game() {
         id = UUID.randomUUID().toString().replace("-", "");
