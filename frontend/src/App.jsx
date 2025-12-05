@@ -2,122 +2,17 @@ import { useState } from 'react'
 import './App.css'
 import {CardContainer} from './affichageCarteJoueurAnaelle/CarteJoueur'
 import {Boutique} from './affichageCarteJoueurAnaelle/Boutique'
+import {HealthBar} from './affichageCarteJoueurAnaelle/stats/healthBar'
+import {FistBar} from './affichageCarteJoueurAnaelle/stats/FistBar'
+import {MoneyBar} from './affichageCarteJoueurAnaelle/stats/MoneyBar'
 
 function App() {
-  const listCardsTemp = [
-        {
-            key : crypto.randomUUID(),
-            name: "0red",
-            url: "public/cartes/0red.svg"
-        },
-        {
-            key : crypto.randomUUID(),
-            name: "0red",
-            url: "public/cartes/0red.svg"
-        },
-        {
-            key : crypto.randomUUID(),
-            name: "0red",
-            url: "public/cartes/0red.svg"
-        }
-    ];
-
-  const productsTemp = [
-        {
-            key : crypto.randomUUID(),
-            name: "skin chat",
-            url: "public/cartes/0red.svg",
-            price: 934
-        },
-        {
-            key : crypto.randomUUID(),
-            name: "bibite",
-            url: "public/cartes/0red.svg",
-            price: 934
-        },
-        {
-            key : crypto.randomUUID(),
-            name: "jsp",
-            url: "public/cartes/0red.svg",
-            price: 934
-        },
-        {
-            key : crypto.randomUUID(),
-            name: "skin chat",
-            url: "public/cartes/0red.svg",
-            price: 934
-        },
-        {
-            key : crypto.randomUUID(),
-            name: "bibite",
-            url: "public/cartes/0red.svg",
-            price: 934
-        },
-        {
-            key : crypto.randomUUID(),
-            name: "jsp",
-            url: "public/cartes/0red.svg",
-            price: 934
-        },
-        {
-            key : crypto.randomUUID(),
-            name: "skin chat",
-            url: "public/cartes/0red.svg",
-            price: 934
-        },
-        {
-            key : crypto.randomUUID(),
-            name: "bibite",
-            url: "public/cartes/0red.svg",
-            price: 934
-        },
-        {
-            key : crypto.randomUUID(),
-            name: "jsp",
-            url: "public/cartes/0red.svg",
-            price: 934
-        },
-        {
-            key : crypto.randomUUID(),
-            name: "skin chat",
-            url: "public/cartes/0red.svg",
-            price: 934
-        },
-        {
-            key : crypto.randomUUID(),
-            name: "bibite",
-            url: "public/cartes/0red.svg",
-            price: 934
-        },
-        {
-            key : crypto.randomUUID(),
-            name: "jsp",
-            url: "public/cartes/0red.svg",
-            price: 934
-        },
-        {
-            key : crypto.randomUUID(),
-            name: "skin chat",
-            url: "public/cartes/0red.svg",
-            price: 934
-        },
-        {
-            key : crypto.randomUUID(),
-            name: "bibite",
-            url: "public/cartes/0red.svg",
-            price: 934
-        }
-    ];
-  const [boutique, setBoutique] = useState(true);
-
-  function closeBoutique(){
-    setBoutique(false);
-  }
-  
   return (
     <>
-    {boutique && <Boutique products={productsTemp} coins="3000" onClose={closeBoutique}/>}
-      
+    <HealthBar width={240} value={50} maxValue={50}/>
+    <FistBar width={240} value={50} maxValue={50}/>
+    <MoneyBar value={300}/>
+     {/*<Boutique products={productsTemp} coins="3000" onClose={closeBoutique}/>*/}
       {/* <CardContainer width='200px' size="10" cards={listCardsTemp}/>*/}
     </>
   )
