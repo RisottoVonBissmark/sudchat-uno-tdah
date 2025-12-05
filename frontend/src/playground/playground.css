@@ -56,6 +56,47 @@ body {
     width: fit-content;
 }
 
+html::-webkit-scrollbar {
+  width: 4px;            /* largeur pour les scrollbars verticales */
+  height: 4px;           /* hauteur pour scrollbars horizontales */
+}
+
+html::-webkit-scrollbar-track {
+  background: transparent; /* fond transparent */
+}
+
+html::-webkit-scrollbar-thumb {
+  background-color: #888;  /* gris (ajuste si besoin) */
+  border-radius: 999px;    /* arrondi */
+  min-height: 20px;        /* optionnel : garde un pouce utilisable */
+  border: 1px solid transparent; /* espace interne si besoin */
+}
+
+/* Supprime les petites flèches haut/bas (WebKit) */
+html::-webkit-scrollbar-button {
+  display: none;
+  height: 0;
+  width: 0;
+}
+
+/* Coin de scrollbar (en cas de scrollbars horizontales + verticales) */
+html::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* Firefox */
+/* Couleur du pouce et du track — Firefox ignore la largeur en pixels */
+* {
+  /* appliquez au sélecteur que vous préférez (ici global avec *) */
+  scrollbar-width: thin;                /* réduit la largeur (approx. 8px selon Firefox) */
+  scrollbar-color: #888 transparent;    /* thumb color puis track color */
+}
+
+/* Optionnel : cibler un conteneur spécifique */
+.scroll-area {
+  overflow: auto;
+}
+
 /* ================ Card list ================ */
 
 .card-list {
