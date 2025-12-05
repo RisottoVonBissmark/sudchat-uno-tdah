@@ -35,15 +35,8 @@ public class GameService {
         String deckId = deckService.create(108);
         game.setDeckId(deckId);
 
-        ArrayList<String> playerIds = new ArrayList<>();
-        for (int i = 0; i < 4; i++) {
-            String playerId = playerService.create(7);
-            playerIds.add(playerId);
-        }
-
-        game.setPlayerIds(playerIds);
-
         game.setLastCard(deckService.pioche(game.getDeckId()));
+        game.setPlayerIds(new ArrayList<>());
 
         this.gameRepository.save(game);
 
@@ -136,5 +129,16 @@ public class GameService {
         String curPlayer = game.getPlayerIds().get(curPlayerPos);
 
         return playerID.equals(curPlayer);
+    }
+
+    public String join(String gameID) {
+
+        Game game = getGameById(gameID);
+
+        String playerId = playerService.create(7);
+
+        game.getPlayerIds().add(playerId);
+
+        return playerId;
     }
 }
