@@ -1,6 +1,5 @@
 import { Playground } from './playground/Playground.jsx'
 import './App.css'
-import { useState } from 'react';
 
 const tempHand = [
   { type: "normal" },

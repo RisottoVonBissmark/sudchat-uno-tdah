@@ -71,6 +71,7 @@ body {
 
 .card {
     max-width: fit-content;
+    
 
     &:not(:last-child) {
         min-width: 0;
@@ -78,9 +79,21 @@ body {
     }
 }
 
-.card img {
+.card > img {
     height: 100%;
 }
+
+.player-hand .card {
+    transition: transform 0.2s, flex-shrink 0.2s;
+    position: relative;
+}
+.player-hand .card:hover {
+    cursor: pointer;
+    transform: translateY(-2em);
+    flex-shrink: 0.5;
+}
+
+/* ================ Top Bars ================ */
 
 #bars-container{
     display: flex;
@@ -97,8 +110,6 @@ body {
     right: 20px;
     top: 60%;
 }
-
-/* ================ Buttons ================ */
 
 .uno-button {
     position: absolute;
