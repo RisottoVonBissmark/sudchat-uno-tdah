@@ -68,6 +68,11 @@ public class GameService {
         Card card;
 
         Game game = getGameById(gameID);
+
+        if (game.getPlayerIds().size() < 4) {
+            throw new PartyNotFullException("");
+        }
+
         card = deckService.pioche(game.getDeckId());
 
         playerService.addCard(playerID, card);
@@ -83,6 +88,10 @@ public class GameService {
     public void playCard(String gameID, String playerID, int cardID) {
 
         Game game = getGameById(gameID);
+
+        if (game.getPlayerIds().size() < 4) {
+            throw new PartyNotFullException("");
+        }
 
         if (! game.getPlayerIds().get(game.getCurPlayer()).equals(playerID))  {
             throw new NotPlayerTurnException(""+playerID);
@@ -134,11 +143,15 @@ public class GameService {
     public String join(String gameID) {
 
         Game game = getGameById(gameID);
-
         String playerId = playerService.create(7);
 
-        game.getPlayerIds().add(playerId);
+        ArrayList<String> playerIds = game.getPlayerIds();
 
+        if (playerIds.size() >= 4) {
+            throw new PartyFullException("");
+        }
+
+        playerIds.add(playerId);
         return playerId;
     }
 }
