@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState , useEffect} from "react";
 import UserWait from "./UserWait";
 import { useNavigate } from "react-router-dom";
 
@@ -12,6 +12,10 @@ export default function WaitingRoom({ players: initialPlayers }){
             prevPlayers.filter((_, index) => index !== indexToRemove)
         );
     };
+    
+    // useEffect(() => {
+    //     fetch("http://localhost:3306/")
+    // })
 
     return(
         <div className="bg-red-400 rounded-xl p-10">

@@ -19,6 +19,9 @@ export default function LoginPage() {
   const handleHost = () => {
     if (!pseudo.trim()) return;
     alert(`Création d'une partie en tant que ${pseudo} (hôte)`);
+
+
+
     navigate("/waitingRoom");
   };
 
