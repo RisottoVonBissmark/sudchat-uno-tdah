@@ -43,10 +43,10 @@ export class HealthBar extends React.Component{
     render(){
         var barLength = 100 * this.state.health / this.state.maxHealth;
         return (
-        <div className="bar">
+        <div id="health-bar" className="bar">
             <img className="bar-icon" src="icons/heart.png"/>
-            <div className="bar-container" style={{width: "100%"}}>
-                <div className="bar-progress" style={{backgroundColor: "#FF0000", width: `${barLength}%`}}></div>
+            <div className="bar-container">
+                <div className="bar-progress" style={{ width: `${barLength}%` }}></div>
             </div>
             <span className="bar-value">{this.state.health}/{this.state.maxHealth}</span>
         </div>

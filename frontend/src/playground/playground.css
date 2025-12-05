@@ -112,7 +112,6 @@ html::-webkit-scrollbar-corner {
 
 .card {
     max-width: fit-content;
-    
 
     &:not(:last-child) {
         min-width: 0;

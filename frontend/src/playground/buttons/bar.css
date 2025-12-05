@@ -33,6 +33,10 @@
 
 /* ============ Specific Bars ============ */
 
+#health-bar .bar-progress {
+    background-color: #FF0000;
+}
+
 #fist-bar .bar-progress {
     background-color: #FFCD70;
 }
