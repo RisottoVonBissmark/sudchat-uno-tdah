@@ -55,6 +55,11 @@ public class GameService {
 
     public Iterable<Card> getCards(String gameId, String playerID) {
         Game game = getGameById(gameId);
+
+        if (!game.getPlayerIds().contains(playerID)) {
+            throw new UnauthorizedException("");
+        }
+
         Player player = playerService.getPlayerById(playerID);
 
         if (!game.getPlayerIds().contains(player.getId())) {
@@ -68,6 +73,10 @@ public class GameService {
         Card card;
 
         Game game = getGameById(gameID);
+
+        if (!game.getPlayerIds().contains(playerID)) {
+            throw new UnauthorizedException("");
+        }
 
         if (game.getPlayerIds().size() < 4) {
             throw new PartyNotFullException("");
@@ -93,6 +102,10 @@ public class GameService {
     public void playCard(String gameID, String playerID, int cardID) {
 
         Game game = getGameById(gameID);
+
+        if (!game.getPlayerIds().contains(playerID)) {
+            throw new UnauthorizedException("");
+        }
 
         if (game.getPlayerIds().size() < 4) {
             throw new PartyNotFullException("");
@@ -172,6 +185,10 @@ public class GameService {
     public boolean isMyTurn(String gameID, String playerID) {
         Game game = getGameById(gameID);
 
+        if (!game.getPlayerIds().contains(playerID)) {
+            throw new UnauthorizedException("");
+        }
+
         int curPlayerPos = game.getCurPlayer();
         String curPlayer = game.getPlayerIds().get(curPlayerPos);
 
@@ -191,5 +208,15 @@ public class GameService {
 
         playerIds.add(playerId);
         return playerId;
+    }
+
+    public int nbPlayers(String gameID, String playerID) {
+        Game game = getGameById(gameID);
+
+        if (! game.getPlayerIds().contains(playerID)) {
+            throw new UnauthorizedException("");
+        }
+
+        return game.getPlayerIds().size();
     }
 }
