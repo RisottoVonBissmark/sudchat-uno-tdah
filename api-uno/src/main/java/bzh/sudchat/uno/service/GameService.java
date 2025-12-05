@@ -73,6 +73,11 @@ public class GameService {
             throw new PartyNotFullException("");
         }
 
+        if (deckService.getDeckById(game.getDeckId()).getCards().isEmpty()) {
+            String deck = deckService.create(108);
+            game.setDeckId(deck);
+        }
+
         card = deckService.pioche(game.getDeckId());
 
         playerService.addCard(playerID, card);
