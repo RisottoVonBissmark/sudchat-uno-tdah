@@ -77,7 +77,7 @@ public class GameController {
     }
 
     @GetMapping("/{gameID}/nbcards/{player}")
-    public int getNbCards(@PathVariable String gameID, @CookieValue(value="session", required = false) String playerID, @PathVariable String player) {
+    public int getNbCards(@PathVariable String gameID, @CookieValue(value="session", required = false) String playerID, @PathVariable Integer player) {
         return this.gameService.getNbCards(gameID, playerID, player);
     }
 
