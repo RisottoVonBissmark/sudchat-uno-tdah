@@ -3,6 +3,8 @@ package bzh.sudchat.uno.controller;
 import bzh.sudchat.uno.model.Card;
 import bzh.sudchat.uno.model.Game;
 import bzh.sudchat.uno.service.GameService;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,15 +32,31 @@ public class GameController {
         return this.gameService.getGameById(gameID);
     }
 
+    @GetMapping("/{gameID}/join")
+    public boolean join(@PathVariable String gameID, HttpServletResponse response) {
+
+        String playerID = this.gameService.join(gameID);
+
+        Cookie cookie = new Cookie("session", playerID);
+        cookie.setMaxAge(3600); // 1 hour
+        cookie.setSecure(true); // use HTTPS in production!
+        cookie.setHttpOnly(true);
+        cookie.setPath("/");
+
+        response.addCookie(cookie);
+
+        return true;
+    }
+
     //piocher (GET)
-    @GetMapping("/{gameID}/{playerID}/pioche")
-    public Card piocheCard(@PathVariable String gameID, @PathVariable String playerID) {
+    @GetMapping("/{gameID}/pioche")
+    public Card piocheCard(@PathVariable String gameID, @CookieValue(value = "session", required = false) String playerID) {
         return this.gameService.pioche(gameID, playerID);
     }
 
     // Jouer une carte (POST)
-    @PostMapping("/{gameID}/{playerID}/play")
-    public void playCard(@PathVariable String gameID, @PathVariable String playerID, @RequestBody Integer cardID) {
+    @PostMapping("/{gameID}/play")
+    public void playCard(@PathVariable String gameID, @CookieValue(value = "session", required = false) String playerID, @RequestBody Integer cardID) {
         gameService.playCard(gameID, playerID, cardID);
     }
 
@@ -48,15 +66,16 @@ public class GameController {
         return this.gameService.getLastCard(gameID);
     }
 
-    @GetMapping("/{gameID}/{playerID}/cards")
-    public Iterable<Card> viewCards(@PathVariable String gameID, @PathVariable String playerID) {
-        return this.gameService.getCards(gameID, playerID);
+    @GetMapping("/{gameID}/cards")
+    public Iterable<Card> viewCards(@PathVariable String gameID, @CookieValue(value = "session", required = false) String session) {
+        return this.gameService.getCards(gameID, session);
     }
 
-    @GetMapping("/{gameID}/{playerID}/ismyturn")
-    public boolean isMyTurn(@PathVariable String gameID, @PathVariable String playerID) {
+    @GetMapping("/{gameID}/ismyturn")
+    public boolean isMyTurn(@PathVariable String gameID, @CookieValue(value = "session", required = false) String playerID) {
         return this.gameService.isMyTurn(gameID, playerID);
     }
+    
     // uno (POST)
     // contre uno (POST)
 

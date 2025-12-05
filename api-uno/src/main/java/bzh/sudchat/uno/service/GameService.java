@@ -35,15 +35,8 @@ public class GameService {
         String deckId = deckService.create(108);
         game.setDeckId(deckId);
 
-        ArrayList<String> playerIds = new ArrayList<>();
-        for (int i = 0; i < 4; i++) {
-            String playerId = playerService.create(7);
-            playerIds.add(playerId);
-        }
-
-        game.setPlayerIds(playerIds);
-
         game.setLastCard(deckService.pioche(game.getDeckId()));
+        game.setPlayerIds(new ArrayList<>());
 
         this.gameRepository.save(game);
 
@@ -75,6 +68,16 @@ public class GameService {
         Card card;
 
         Game game = getGameById(gameID);
+
+        if (game.getPlayerIds().size() < 4) {
+            throw new PartyNotFullException("");
+        }
+
+        if (deckService.getDeckById(game.getDeckId()).getCards().isEmpty()) {
+            String deck = deckService.create(108);
+            game.setDeckId(deck);
+        }
+
         card = deckService.pioche(game.getDeckId());
 
         playerService.addCard(playerID, card);
@@ -90,6 +93,10 @@ public class GameService {
     public void playCard(String gameID, String playerID, int cardID) {
 
         Game game = getGameById(gameID);
+
+        if (game.getPlayerIds().size() < 4) {
+            throw new PartyNotFullException("");
+        }
 
         if (! game.getPlayerIds().get(game.getCurPlayer()).equals(playerID))  {
             throw new NotPlayerTurnException(""+playerID);
@@ -110,9 +117,42 @@ public class GameService {
 
         if (
             card.getColor() != game.getLastCard().getColor() &&
-            card.getNumCarte() != game.getLastCard().getNumCarte()
+            card.getNumCarte() != game.getLastCard().getNumCarte() &&
+            card.getColor() != 4
         ) {
             throw new CardNotPlayableException(""+cardID);
+        }
+
+        String nPlayer = game.getPlayerIds().get((game.getCurPlayer() + game.getSens()) % 4);
+        switch (card.getType()) {
+            // pioche x cartes
+            case 1 :
+                playerService.pioche(nPlayer, game.getDeckId(), card.getNumCarte());
+                break;
+            //saute un tour
+            case 2:
+                nextPlayer(game);
+                break;
+            // chgmt sens
+            case 3:
+                game.setSens(- game.getSens());
+                break;
+            // chgmt couleur
+            case 4:
+                if (card.getNumCarte() >= 4 ||  card.getNumCarte() < 0) {
+                    throw new CardNotPlayableException(""+cardID);
+                }
+                card.setColor(card.getNumCarte());
+                break;
+            case 5:
+                if (card.getNumCarte() >= 4 ||  card.getNumCarte() < 0) {
+                    throw new CardNotPlayableException(""+cardID);
+                }
+                card.setColor(card.getNumCarte());
+                playerService.pioche(nPlayer, game.getDeckId(), 4);
+                break;
+            default:
+                throw new CardNotPlayableException(""+cardID);
         }
 
         player.getDeck().remove(card);
@@ -123,7 +163,7 @@ public class GameService {
     private void nextPlayer(Game game) {
         int curPlayer = game.getCurPlayer();
 
-        curPlayer++;
+        curPlayer += game.getSens();
         curPlayer %= game.getPlayerIds().size();
 
         game.setCurPlayer(curPlayer);
@@ -136,5 +176,20 @@ public class GameService {
         String curPlayer = game.getPlayerIds().get(curPlayerPos);
 
         return playerID.equals(curPlayer);
+    }
+
+    public String join(String gameID) {
+
+        Game game = getGameById(gameID);
+        String playerId = playerService.create(7);
+
+        ArrayList<String> playerIds = game.getPlayerIds();
+
+        if (playerIds.size() >= 4) {
+            throw new PartyFullException("");
+        }
+
+        playerIds.add(playerId);
+        return playerId;
     }
 }

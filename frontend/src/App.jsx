@@ -1,31 +1,61 @@
-import { useState } from 'react'
+import { Playground } from './playground/Playground.jsx'
 import './App.css'
-import {CardContainer} from './affichageCarteJoueurAnaelle/CarteJoueur'
+
+const tempHand = [
+  { type: "normal" },
+  { type: "normal" },
+  { type: "normal" },
+  { type: "normal" },
+  { type: "normal" },
+  { type: "normal" },
+  { type: "normal" },
+  { type: "normal" },
+  { type: "normal" },
+  { type: "normal" },
+  { type: "normal" },
+  { type: "normal" },
+  { type: "normal" },
+  { type: "normal" },
+  { type: "normal" },
+  { type: "normal" },
+  { type: "normal" },
+  { type: "normal" },
+  { type: "normal" },
+  { type: "normal" },
+  { type: "normal" },
+  { type: "normal" },
+  { type: "normal" },
+  { type: "normal" },
+  { type: "normal" },
+  { type: "normal" },
+  { type: "normal" },
+  { type: "normal" },
+  { type: "normal" },
+  { type: "normal" },
+  { type: "normal" },
+];
+
+const tempPlayerList = [
+  {
+    name: "Anaelle",
+    id: crypto.randomUUID(),
+    cardsCount: 5
+  },
+  {
+    name: "Anaelle 2",
+    id: crypto.randomUUID(),
+    cardsCount: 10
+  },
+  {
+    name: "Anaelle 3",
+    id: crypto.randomUUID(),
+    cardsCount: 15
+  }
+];
 
 function App() {
-  const listCardsTemp = [
-        {
-            key : crypto.randomUUID(),
-            name: "0red",
-            url: "public/cartes/0red.svg"
-        },
-        {
-            key : crypto.randomUUID(),
-            name: "0red",
-            url: "public/cartes/0red.svg"
-        },
-        {
-            key : crypto.randomUUID(),
-            name: "0red",
-            url: "public/cartes/0red.svg"
-        }
-    ];
-  const [count, setCount] = useState(0);
-  
   return (
-    <>
-      <CardContainer width='200px' size="10" cards={listCardsTemp}/>
-    </>
+    <Playground hand={tempHand} opponents={tempPlayerList} />
   )
 }
 

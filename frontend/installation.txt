@@ -2,6 +2,7 @@ npm init -y
 npm install react
 npm install vite
 npm install tailwindcss @tailwindcss/vite
+npm install react-router-dom
 
-Pour lancer :
-    npm run dev
+Pour lancer (dans repertoire avec le vite config) :
+    npm run dev 
