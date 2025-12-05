@@ -4,7 +4,7 @@ export default function WaitingRoom({ players, onRemovePlayer }){
     return(
         <div className="bg-red-400 rounded-xl p-10">
             <div className="mb-4 text-white font-bold">
-                Joeur.euses en attente: {players.length}
+                Kitties en attente: {players.length}
             </div>
             
             {players.length === 0 ? (
@@ -21,6 +21,8 @@ export default function WaitingRoom({ players, onRemovePlayer }){
                     </div>
                 ))
             )}
+            <button>Démarrer</button>
+            
         </div>
     )
 }
