@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { User, Hash, Crown } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 export default function LoginPage() {
   const defaultBg = "bg-[#bf0000]";
@@ -17,6 +18,7 @@ export default function LoginPage() {
   const handleHost = () => {
     if (!pseudo.trim()) return;
     alert(`Création d'une partie en tant que ${pseudo} (hôte)`);
+    navigate("/waitingRoom");
   };
 
   const enableBelgianBackground = () => {
