@@ -1,7 +1,10 @@
 import { useState } from "react";
 import UserWait from "./UserWait";
+import { useNavigate } from "react-router-dom";
+
 
 export default function WaitingRoom({ players: initialPlayers }){
+    const navigate = useNavigate();
     const [players, setPlayers] = useState(initialPlayers);
     
     const handleRemovePlayer = (indexToRemove) => {
@@ -30,7 +33,7 @@ export default function WaitingRoom({ players: initialPlayers }){
                     </div>
                 ))
             )}
-            <button className="mt-4 px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700">
+            <button className="mt-4 px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700" onClick={() => {navigate("/game")}}>
                 Démarrer
             </button>
         </div>

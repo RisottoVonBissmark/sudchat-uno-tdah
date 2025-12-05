@@ -4,6 +4,7 @@ import {CardContainer} from './affichageCarteJoueurAnaelle/CarteJoueur'
 import { Routes, Route } from "react-router-dom";
 import LoginPage from './Login';
 import WaitingRoom from './pages/WaitingRoom/WaitingRoom';
+import Playground from './playground/Playground';
 
 function App() {
   const listCardsTemp = [
@@ -35,6 +36,7 @@ function App() {
     <Routes>
       <Route path="/" element={<LoginPage />} />
       <Route path="/waitingRoom" element={<WaitingRoom players={["Miku","Teto","Neru"]} /> } />
+      <Route path="/game" element={<Playground />} />
     </Routes>
   </div>
   )
